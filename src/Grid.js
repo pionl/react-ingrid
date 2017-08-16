@@ -63,8 +63,7 @@ class Grid extends Component {
             PreloaderComponent = DefaultPreloader,
             preloaderHeight = defaultpreloaderHeight,
             isShowingPreloader = true,
-            itemProps,
-            renderItem
+            itemProps
         } = this.context
 
         const contentStyle = {
@@ -83,18 +82,16 @@ class Grid extends Component {
             position: `absolute`
         }
 
-        const hasCustomRenderItem = typoef renderItem === 'function'
-
         return (
             <div style={contentStyle}>
                 <div style={scrollHelperStyle}/>
                 {items
                     .slice(minVisibleIndex, maxVisibleIndex + 1)
-                    .map(item => (
+                    .map((item) => {
                         const key = typeof item.get === `function` ? item.get(`id`) : item.id
                         const style = createItemStyle(this.context)
-                        return <ItemComponent style={style} data={item} key={key} {...itemProps}>
-                    ))}
+                        return <ItemComponent style={style} data={item} key={key} {...itemProps} />
+                    })}
 
                 {isShowingPreloader && loading ?
                     <div style={preloaderStyle}>
