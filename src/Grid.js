@@ -45,7 +45,8 @@ class Grid extends Component {
             paddingTop = 0,
             PreloaderComponent = DefaultPreloader,
             preloaderHeight = defaultpreloaderHeight,
-            isShowingPreloader = true
+            isShowingPreloader = true,
+            itemProps,
         } = this.context
 
         const contentStyle = {
@@ -70,7 +71,7 @@ class Grid extends Component {
                 {items
                     .slice(minVisibleIndex, maxVisibleIndex + 1)
                     .map(item => (
-                        <Item key={typeof item.get === `function` ? item.get(`id`) : item.id} item={item}/>
+                        <Item key={typeof item.get === `function` ? item.get(`id`) : item.id} item={item} {...itemProps} />
                     ))}
 
                 {isShowingPreloader && loading ?

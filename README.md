@@ -284,6 +284,25 @@ const PreloaderComponent = () => (
 
 You can add more space for your preloader here.
 
+<a name="preloaderHeightProp"></a>
+#### itemProps (optional)
+
+You can pass additional props to your `ItemComponent`.
+
+```javascrupt
+const ItemComponent = (props) => (
+    const data = props.data
+    const custom = props.custom
+    <div>
+        <h1>Much loading. So wait.</h1>
+    </div>
+)
+const itemProps = {
+    custom: true
+}
+return <Ingrid itemProps={itemProps} ... />
+```
+
 <a name="shouldPrerenderAll"></a>
 #### shouldPrerenderAll (optional)
 

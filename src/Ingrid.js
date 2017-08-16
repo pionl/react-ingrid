@@ -12,7 +12,8 @@ class Ingrid extends Component {
             loading,
             PreloaderComponent,
             preloaderHeight,
-            isShowingPreloader
+            isShowingPreloader,
+            itemProps
         } = this.props
 
         return {
@@ -23,7 +24,8 @@ class Ingrid extends Component {
             loading,
             PreloaderComponent,
             preloaderHeight,
-            isShowingPreloader
+            isShowingPreloader,
+            itemProps
         }
     }
 
@@ -77,7 +79,9 @@ Ingrid.childContextTypes = {
     loading: PropTypes.bool,
     PreloaderComponent: PropTypes.func,
     preloaderHeight: PropTypes.number,
-    isShowingPreloader: PropTypes.bool
+    isShowingPreloader: PropTypes.bool,
+    // Additional item props
+    itemProps: PropTypes.any
 }
 
 Ingrid.propTypes = {
@@ -89,7 +93,9 @@ Ingrid.propTypes = {
     itemWidth: PropTypes.number.isRequired,
     paddingTop: PropTypes.number,
     preloaderHeight: PropTypes.number,
-    prerenderAll: PropTypes.bool
+    prerenderAll: PropTypes.bool,
+    // Additional item props
+    itemProps: PropTypes.any
 }
 
 export default Ingrid
