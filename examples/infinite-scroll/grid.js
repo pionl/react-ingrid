@@ -11519,6 +11519,12 @@
 	    return obj && obj.__esModule ? obj : { default: obj };
 	}
 
+	function _objectWithoutProperties(obj, keys) {
+	    var target = {};for (var i in obj) {
+	        if (keys.indexOf(i) >= 0) continue;if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;target[i] = obj[i];
+	    }return target;
+	}
+
 	function _classCallCheck(instance, Constructor) {
 	    if (!(instance instanceof Constructor)) {
 	        throw new TypeError("Cannot call a class as a function");
@@ -11557,7 +11563,10 @@
 	    _createClass(Item, [{
 	        key: 'render',
 	        value: function render() {
-	            var item = this.props.item;
+	            var _props = this.props,
+	                item = _props.item,
+	                other = _objectWithoutProperties(_props, ['item']);
+
 	            var _context = this.context,
 	                ItemComponent = _context.ItemComponent,
 	                itemWidth = _context.itemWidth,
@@ -11568,7 +11577,7 @@
 	                height: itemHeight
 	            });
 
-	            return _react2.default.createElement('div', { style: itemStyle }, _react2.default.createElement(ItemComponent, { data: item }));
+	            return _react2.default.createElement('div', { style: itemStyle }, _react2.default.createElement(ItemComponent, _extends({ data: item }, other)));
 	        }
 	    }]);
 
