@@ -80,7 +80,6 @@ Ingrid.childContextTypes = {
     PreloaderComponent: PropTypes.func,
     preloaderHeight: PropTypes.number,
     isShowingPreloader: PropTypes.bool,
-    // Additional item props
     itemProps: PropTypes.any
 }
 
@@ -94,7 +93,6 @@ Ingrid.propTypes = {
     paddingTop: PropTypes.number,
     preloaderHeight: PropTypes.number,
     prerenderAll: PropTypes.bool,
-    // Additional item props
     itemProps: PropTypes.any
 }
 

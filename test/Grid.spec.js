@@ -40,7 +40,10 @@ describe(`react-ingrid`, () => {
                 loading: PropTypes.bool,
                 PreloaderComponent: PropTypes.func,
                 preloaderHeight: PropTypes.number,
-                isShowingPreloader: PropTypes.bool
+                isShowingPreloader: PropTypes.bool,
+                ItemComponent: ItemMock,
+                itemWidth: 200,
+                itemHeight: 200
             }, props => ({
                 items: props.items || [],
                 loading: props.loading,
@@ -62,7 +65,10 @@ describe(`react-ingrid`, () => {
                 loading: false,
                 PreloaderComponent: rndoam.noop(),
                 preloaderHeight: rndoam.number(),
-                isShowingPreloader: true
+                isShowingPreloader: true,
+                PreloaderComponent: rndoam.noop(),
+                itemWidth: rndoam.number(),
+                itemHeight: rndoam.number(),
             }
 
             const tree = TestUtils
