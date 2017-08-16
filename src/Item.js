@@ -10,7 +10,7 @@ const defaultItemStyle = {
 
 class Item extends Component {
     render() {
-        const {item} = this.props
+        const {item, ...other} = this.props
         const {ItemComponent, itemWidth, itemHeight} = this.context
 
         const itemStyle = {
@@ -21,7 +21,7 @@ class Item extends Component {
 
         return (
             <div style={itemStyle}>
-                <ItemComponent data={item}/>
+                <ItemComponent data={item} {...other}/>
             </div>
         )
     }
