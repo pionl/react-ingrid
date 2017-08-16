@@ -17,7 +17,7 @@ const defaultItemStyle = {
 
 
 function createItemStyle (context) {
-    const {itemWidth, itemHeight} = this.context
+    const {itemWidth, itemHeight} = context
 
     return {
         ...defaultItemStyle,
@@ -63,7 +63,8 @@ class Grid extends Component {
             PreloaderComponent = DefaultPreloader,
             preloaderHeight = defaultpreloaderHeight,
             isShowingPreloader = true,
-            itemProps
+            itemProps,
+            ItemComponent
         } = this.context
 
         const contentStyle = {
@@ -109,7 +110,11 @@ Grid.contextTypes = {
     loading: PropTypes.bool,
     PreloaderComponent: PropTypes.func,
     preloaderHeight: PropTypes.number,
-    isShowingPreloader: PropTypes.bool
+    isShowingPreloader: PropTypes.bool,
+    ItemComponent: PropTypes.func.isRequired,
+    itemHeight: PropTypes.number.isRequired,
+    itemWidth: PropTypes.number.isRequired,
+    itemProps: PropTypes.any
 }
 
 export default Grid

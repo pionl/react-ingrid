@@ -6606,7 +6606,6 @@
 	    PreloaderComponent: _react.PropTypes.func,
 	    preloaderHeight: _react.PropTypes.number,
 	    isShowingPreloader: _react.PropTypes.bool,
-	    // Additional item props
 	    itemProps: _react.PropTypes.any
 	};
 
@@ -6620,7 +6619,6 @@
 	    paddingTop: _react.PropTypes.number,
 	    preloaderHeight: _react.PropTypes.number,
 	    prerenderAll: _react.PropTypes.bool,
-	    // Additional item props
 	    itemProps: _react.PropTypes.any
 	};
 
@@ -11096,9 +11094,8 @@
 	};
 
 	function createItemStyle(context) {
-	    var _context = this.context,
-	        itemWidth = _context.itemWidth,
-	        itemHeight = _context.itemHeight;
+	    var itemWidth = context.itemWidth,
+	        itemHeight = context.itemHeight;
 
 	    return _extends({}, defaultItemStyle, {
 	        width: itemWidth,
@@ -11159,19 +11156,20 @@
 
 	            var defaultpreloaderHeight = 200;
 
-	            var _context2 = this.context,
-	                _context2$items = _context2.items,
-	                items = _context2$items === undefined ? [] : _context2$items,
-	                loading = _context2.loading,
-	                _context2$paddingTop = _context2.paddingTop,
-	                paddingTop = _context2$paddingTop === undefined ? 0 : _context2$paddingTop,
-	                _context2$PreloaderCo = _context2.PreloaderComponent,
-	                PreloaderComponent = _context2$PreloaderCo === undefined ? DefaultPreloader : _context2$PreloaderCo,
-	                _context2$preloaderHe = _context2.preloaderHeight,
-	                preloaderHeight = _context2$preloaderHe === undefined ? defaultpreloaderHeight : _context2$preloaderHe,
-	                _context2$isShowingPr = _context2.isShowingPreloader,
-	                isShowingPreloader = _context2$isShowingPr === undefined ? true : _context2$isShowingPr,
-	                itemProps = _context2.itemProps;
+	            var _context = this.context,
+	                _context$items = _context.items,
+	                items = _context$items === undefined ? [] : _context$items,
+	                loading = _context.loading,
+	                _context$paddingTop = _context.paddingTop,
+	                paddingTop = _context$paddingTop === undefined ? 0 : _context$paddingTop,
+	                _context$PreloaderCom = _context.PreloaderComponent,
+	                PreloaderComponent = _context$PreloaderCom === undefined ? DefaultPreloader : _context$PreloaderCom,
+	                _context$preloaderHei = _context.preloaderHeight,
+	                preloaderHeight = _context$preloaderHei === undefined ? defaultpreloaderHeight : _context$preloaderHei,
+	                _context$isShowingPre = _context.isShowingPreloader,
+	                isShowingPreloader = _context$isShowingPre === undefined ? true : _context$isShowingPre,
+	                itemProps = _context.itemProps,
+	                ItemComponent = _context.ItemComponent;
 
 	            var contentStyle = {
 	                position: 'relative',
@@ -11204,7 +11202,11 @@
 	    loading: _react.PropTypes.bool,
 	    PreloaderComponent: _react.PropTypes.func,
 	    preloaderHeight: _react.PropTypes.number,
-	    isShowingPreloader: _react.PropTypes.bool
+	    isShowingPreloader: _react.PropTypes.bool,
+	    ItemComponent: _react.PropTypes.func.isRequired,
+	    itemHeight: _react.PropTypes.number.isRequired,
+	    itemWidth: _react.PropTypes.number.isRequired,
+	    itemProps: _react.PropTypes.any
 	};
 
 	exports.default = Grid;
