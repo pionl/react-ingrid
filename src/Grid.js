@@ -1,12 +1,29 @@
 import React, {Component, PropTypes} from 'react'
 
-import Item from './Item'
-
 const defaultScrollHelperStyle = {
     display: `block`,
     position: `relative`,
     width: `100%`,
     height: 0
+}
+
+const defaultItemStyle = {
+    display: `inline-block`,
+    position: `relative`,
+    verticalAlign: `bottom`,
+    width: 0,
+    height: 0
+}
+
+
+function createItemStyle (context) {
+    const {itemWidth, itemHeight} = this.context
+
+    return {
+        ...defaultItemStyle,
+        width: itemWidth,
+        height: itemHeight
+    }
 }
 
 export class DefaultPreloader extends Component {
@@ -47,6 +64,7 @@ class Grid extends Component {
             preloaderHeight = defaultpreloaderHeight,
             isShowingPreloader = true,
             itemProps,
+            renderItem
         } = this.context
 
         const contentStyle = {
@@ -65,13 +83,17 @@ class Grid extends Component {
             position: `absolute`
         }
 
+        const hasCustomRenderItem = typoef renderItem === 'function'
+
         return (
             <div style={contentStyle}>
                 <div style={scrollHelperStyle}/>
                 {items
                     .slice(minVisibleIndex, maxVisibleIndex + 1)
                     .map(item => (
-                        <Item key={typeof item.get === `function` ? item.get(`id`) : item.id} item={item} {...itemProps} />
+                        const key = typeof item.get === `function` ? item.get(`id`) : item.id
+                        const style = createItemStyle(this.context)
+                        return <ItemComponent style={style} data={item} key={key} {...itemProps}>
                     ))}
 
                 {isShowingPreloader && loading ?
