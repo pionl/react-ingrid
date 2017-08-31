@@ -88,10 +88,10 @@ class Grid extends Component {
                 <div style={scrollHelperStyle}/>
                 {items
                     .slice(minVisibleIndex, maxVisibleIndex + 1)
-                    .map((item) => {
+                    .map((item, index) => {
                         const key = typeof item.get === `function` ? item.get(`id`) : item.id
                         const style = createItemStyle(this.context)
-                        return <ItemComponent style={style} data={item} key={key} {...itemProps} />
+                        return <ItemComponent style={style} index={index} data={item} key={key} {...itemProps} />
                     })}
 
                 {isShowingPreloader && loading ?

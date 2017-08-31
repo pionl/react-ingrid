@@ -65,6 +65,7 @@ const Grid = ingrid(props => props)(ItemComponent)
 * [`preloaderHeight`](#preloaderHeightProp)
 * [`isShowingPreloader`](#isShowingPreloaderProp)
 * [`shouldPrerenderAll`](#shouldPrerenderAll)
+* [`itemProps`](#itemProps)
 
 
 <a name="ItemComponentProp"></a>
@@ -75,6 +76,8 @@ Use your :sparkles:imagination:sparkles: to define how your grid items should lo
 This component gets:
 
 * `data` - The data to render (plain object or Immutable.js)
+* `index` - The item index
+* spreaded [`itemProps`](#itemProps)
 
 It should return a react component. For example:
 
@@ -284,7 +287,7 @@ const PreloaderComponent = () => (
 
 You can add more space for your preloader here.
 
-<a name="preloaderHeightProp"></a>
+<a name="itemProps"></a>
 #### itemProps (optional)
 
 You can pass additional props to your `ItemComponent`.
@@ -307,6 +310,7 @@ return <Ingrid itemProps={itemProps} ... />
 #### shouldPrerenderAll (optional)
 
 If you want to render your grid on the server side you should set this propery true. In this case all items will be rendered on the initial render call.
+
 
 ## Examples
 
