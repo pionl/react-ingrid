@@ -11249,10 +11249,10 @@
 	                position: 'absolute'
 	            };
 
-	            return _react2.default.createElement('div', { style: contentStyle }, _react2.default.createElement('div', { style: scrollHelperStyle }), items.slice(minVisibleIndex, maxVisibleIndex + 1).map(function (item) {
+	            return _react2.default.createElement('div', { style: contentStyle }, _react2.default.createElement('div', { style: scrollHelperStyle }), items.slice(minVisibleIndex, maxVisibleIndex + 1).map(function (item, index) {
 	                var key = typeof item.get === 'function' ? item.get('id') : item.id;
 	                var style = createItemStyle(_this3.context);
-	                return _react2.default.createElement(ItemComponent, _extends({ style: style, data: item, key: key }, itemProps));
+	                return _react2.default.createElement(ItemComponent, _extends({ style: style, index: index, data: item, key: key }, itemProps));
 	            }), isShowingPreloader && loading ? _react2.default.createElement('div', { style: preloaderStyle }, _react2.default.createElement(PreloaderComponent, null)) : '');
 	        }
 	    }]);
