@@ -13,7 +13,8 @@ class Ingrid extends Component {
             PreloaderComponent,
             preloaderHeight,
             isShowingPreloader,
-            itemProps
+            itemProps,
+            getItemKey
         } = this.props
 
         return {
@@ -25,7 +26,8 @@ class Ingrid extends Component {
             PreloaderComponent,
             preloaderHeight,
             isShowingPreloader,
-            itemProps
+            itemProps,
+            getItemKey
         }
     }
 
