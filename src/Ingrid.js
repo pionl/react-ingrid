@@ -80,7 +80,8 @@ Ingrid.childContextTypes = {
     PreloaderComponent: PropTypes.func,
     preloaderHeight: PropTypes.number,
     isShowingPreloader: PropTypes.bool,
-    itemProps: PropTypes.any
+    itemProps: PropTypes.any,
+    getItemKey: PropTypes.func
 }
 
 Ingrid.propTypes = {
@@ -93,7 +94,12 @@ Ingrid.propTypes = {
     paddingTop: PropTypes.number,
     preloaderHeight: PropTypes.number,
     prerenderAll: PropTypes.bool,
-    itemProps: PropTypes.any
+    itemProps: PropTypes.any,
+    getItemKey: PropTypes.func
+}
+
+Ingrid.propTypes = {
+  getItemKey: (item) => typeof item.get === `function` ? item.get(`id`) : item.id
 }
 
 export default Ingrid
