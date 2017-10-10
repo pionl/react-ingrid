@@ -100,7 +100,7 @@ Ingrid.propTypes = {
     getItemKey: PropTypes.func
 }
 
-Ingrid.propTypes = {
+Ingrid.defaultProps = {
   getItemKey: (item) => typeof item.get === `function` ? item.get(`id`) : item.id
 }
 
