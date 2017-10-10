@@ -89,7 +89,7 @@ class Grid extends Component {
                 {items
                     .slice(minVisibleIndex, maxVisibleIndex + 1)
                     .map((item, index) => {
-                        const key = typeof item.get === `function` ? item.get(`id`) : item.id
+                        const key = this.context.getItemKey(item)
                         const style = createItemStyle(this.context)
                         return <ItemComponent style={style} index={index} data={item} key={key} {...itemProps} />
                     })}
@@ -114,7 +114,8 @@ Grid.contextTypes = {
     ItemComponent: PropTypes.func.isRequired,
     itemHeight: PropTypes.number.isRequired,
     itemWidth: PropTypes.number.isRequired,
-    itemProps: PropTypes.any
+    itemProps: PropTypes.any,
+    getItemKey: PropTypes.func
 }
 
 export default Grid

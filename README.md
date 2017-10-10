@@ -292,7 +292,7 @@ You can add more space for your preloader here.
 
 You can pass additional props to your `ItemComponent`.
 
-```javascrupt
+```javascript
 const ItemComponent = (props) => (
     const data = props.data
     const custom = props.custom
@@ -304,6 +304,14 @@ const itemProps = {
     custom: true
 }
 return <Ingrid itemProps={itemProps} ... />
+```
+<a name="getItemKey"></a>
+#### getItemKey (optional)
+
+You can create your own function that will return a `key` value for given data.
+
+```javascript
+return <Ingrid getItemKey={(item) => item.key} ... />
 ```
 
 <a name="shouldPrerenderAll"></a>
