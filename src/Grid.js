@@ -64,7 +64,8 @@ class Grid extends Component {
             preloaderHeight = defaultpreloaderHeight,
             isShowingPreloader = true,
             itemProps,
-            ItemComponent
+            ItemComponent,
+            getItemKey
         } = this.context
 
         const contentStyle = {
@@ -89,7 +90,7 @@ class Grid extends Component {
                 {items
                     .slice(minVisibleIndex, maxVisibleIndex + 1)
                     .map((item, index) => {
-                        const key = this.context.getItemKey(item)
+                        const key = getItemKey(item)
                         const style = createItemStyle(this.context)
                         return <ItemComponent style={style} index={index} data={item} key={key} {...itemProps} />
                     })}
@@ -115,7 +116,7 @@ Grid.contextTypes = {
     itemHeight: PropTypes.number.isRequired,
     itemWidth: PropTypes.number.isRequired,
     itemProps: PropTypes.any,
-    getItemKey: PropTypes.func
+    getItemKey: PropTypes.func.isRequired
 }
 
 export default Grid

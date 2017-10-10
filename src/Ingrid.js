@@ -83,7 +83,7 @@ Ingrid.childContextTypes = {
     preloaderHeight: PropTypes.number,
     isShowingPreloader: PropTypes.bool,
     itemProps: PropTypes.any,
-    getItemKey: PropTypes.func
+    getItemKey: PropTypes.func.isRequired
 }
 
 Ingrid.propTypes = {
