@@ -92,7 +92,7 @@ class Grid extends Component {
                     .map((item, index) => {
                         const key = getItemKey(item)
                         const style = createItemStyle(this.context)
-                        return <ItemComponent style={style} index={index} data={item} key={key} {...itemProps} />
+                        return <ItemComponent style={style} index={index + minVisibleIndex} data={item} key={key} {...itemProps} />
                     })}
 
                 {isShowingPreloader && loading ?
