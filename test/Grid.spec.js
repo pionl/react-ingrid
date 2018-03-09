@@ -6,6 +6,7 @@ import contextify from 'react-contextify'
 import expect from 'expect'
 import mockery from 'mockery'
 import rndoam from 'rndoam/lib/withImmutable'
+import Ingrid from "../src/Ingrid"
 
 
 class ItemMock extends Component {
@@ -41,15 +42,17 @@ describe(`react-ingrid`, () => {
                 PreloaderComponent: PropTypes.func,
                 preloaderHeight: PropTypes.number,
                 isShowingPreloader: PropTypes.bool,
-                ItemComponent: ItemMock,
-                itemWidth: 200,
-                itemHeight: 200
+                ItemComponent: PropTypes.func,
+                itemWidth: PropTypes.number,
+                itemHeight: PropTypes.number,
+                getItemKey: PropTypes.func
             }, props => ({
                 items: props.items || [],
                 loading: props.loading,
                 PreloaderComponent: props.PreloaderComponent,
                 preloaderHeight: props.preloaderHeight,
-                isShowingPreloader: props.isShowingPreloader
+                isShowingPreloader: props.isShowingPreloader,
+                getItemKey: props.getItemKey || Ingrid.defaultProps.getItemKey
             }))(Grid)
         })
 
@@ -66,9 +69,9 @@ describe(`react-ingrid`, () => {
                 PreloaderComponent: rndoam.noop(),
                 preloaderHeight: rndoam.number(),
                 isShowingPreloader: true,
-                PreloaderComponent: rndoam.noop(),
                 itemWidth: rndoam.number(),
                 itemHeight: rndoam.number(),
+                getItemKey: Ingrid.defaultProps.getItemKey
             }
 
             const tree = TestUtils

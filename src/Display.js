@@ -26,13 +26,15 @@ const getDisplaySize = (inst) => {
     }
 }
 
-const createScrollListener = inst =>
-    () => {
+const createScrollListener = inst => {
+    inst.scrollListener = () => {
         const {scrollTop} = getDisplaySize(inst)
         inst.calculator.updateScrollTop(scrollTop)
 
         inst.setState(inst.calculator.getState())
     }
+    return inst.scrollListener
+}
 
 const createWindowResizeListener = inst => {
     inst.windowResizeListener = () => {
@@ -75,6 +77,7 @@ class Display extends Component {
 
     componentWillUnmount() {
         window.removeEventListener(`resize`, this.windowResizeListener)
+        this.display.removeEventListener(`scroll`, this.scrollListener)
     }
 
     componentWillReceiveProps(nextProps) {
