@@ -6598,7 +6598,8 @@
 	                PreloaderComponent = _props.PreloaderComponent,
 	                preloaderHeight = _props.preloaderHeight,
 	                isShowingPreloader = _props.isShowingPreloader,
-	                itemProps = _props.itemProps;
+	                itemProps = _props.itemProps,
+	                getItemKey = _props.getItemKey;
 
 	            return {
 	                ItemComponent: ItemComponent,
@@ -6609,7 +6610,8 @@
 	                PreloaderComponent: PreloaderComponent,
 	                preloaderHeight: preloaderHeight,
 	                isShowingPreloader: isShowingPreloader,
-	                itemProps: itemProps
+	                itemProps: itemProps,
+	                getItemKey: getItemKey
 	            };
 	        }
 	    }, {
@@ -6669,7 +6671,8 @@
 	    PreloaderComponent: _react.PropTypes.func,
 	    preloaderHeight: _react.PropTypes.number,
 	    isShowingPreloader: _react.PropTypes.bool,
-	    itemProps: _react.PropTypes.any
+	    itemProps: _react.PropTypes.any,
+	    getItemKey: _react.PropTypes.func.isRequired
 	};
 
 	Ingrid.propTypes = {
@@ -6682,7 +6685,14 @@
 	    paddingTop: _react.PropTypes.number,
 	    preloaderHeight: _react.PropTypes.number,
 	    prerenderAll: _react.PropTypes.bool,
-	    itemProps: _react.PropTypes.any
+	    itemProps: _react.PropTypes.any,
+	    getItemKey: _react.PropTypes.func
+	};
+
+	Ingrid.defaultProps = {
+	    getItemKey: function getItemKey(item) {
+	        return typeof item.get === 'function' ? item.get('id') : item.id;
+	    }
 	};
 
 	exports.default = Ingrid;
@@ -10935,7 +10945,7 @@
 	};
 
 	var createScrollListener = function createScrollListener(inst) {
-	    return function () {
+	    inst.scrollListener = function () {
 	        var _getDisplaySize = getDisplaySize(inst),
 	            scrollTop = _getDisplaySize.scrollTop;
 
@@ -10943,6 +10953,7 @@
 
 	        inst.setState(inst.calculator.getState());
 	    };
+	    return inst.scrollListener;
 	};
 
 	var createWindowResizeListener = function createWindowResizeListener(inst) {
@@ -11007,6 +11018,7 @@
 	        key: 'componentWillUnmount',
 	        value: function componentWillUnmount() {
 	            window.removeEventListener('resize', this.windowResizeListener);
+	            this.display.removeEventListener('scroll', this.scrollListener);
 	        }
 	    }, {
 	        key: 'componentWillReceiveProps',
@@ -11232,7 +11244,8 @@
 	                _context$isShowingPre = _context.isShowingPreloader,
 	                isShowingPreloader = _context$isShowingPre === undefined ? true : _context$isShowingPre,
 	                itemProps = _context.itemProps,
-	                ItemComponent = _context.ItemComponent;
+	                ItemComponent = _context.ItemComponent,
+	                getItemKey = _context.getItemKey;
 
 	            var contentStyle = {
 	                position: 'relative',
@@ -11249,10 +11262,10 @@
 	                position: 'absolute'
 	            };
 
-	            return _react2.default.createElement('div', { style: contentStyle }, _react2.default.createElement('div', { style: scrollHelperStyle }), items.slice(minVisibleIndex, maxVisibleIndex + 1).map(function (item) {
-	                var key = typeof item.get === 'function' ? item.get('id') : item.id;
+	            return _react2.default.createElement('div', { style: contentStyle }, _react2.default.createElement('div', { style: scrollHelperStyle }), items.slice(minVisibleIndex, maxVisibleIndex + 1).map(function (item, index) {
+	                var key = getItemKey(item);
 	                var style = createItemStyle(_this3.context);
-	                return _react2.default.createElement(ItemComponent, _extends({ style: style, data: item, key: key }, itemProps));
+	                return _react2.default.createElement(ItemComponent, _extends({ style: style, index: index + minVisibleIndex, data: item, key: key }, itemProps));
 	            }), isShowingPreloader && loading ? _react2.default.createElement('div', { style: preloaderStyle }, _react2.default.createElement(PreloaderComponent, null)) : '');
 	        }
 	    }]);
@@ -11269,7 +11282,8 @@
 	    ItemComponent: _react.PropTypes.func.isRequired,
 	    itemHeight: _react.PropTypes.number.isRequired,
 	    itemWidth: _react.PropTypes.number.isRequired,
-	    itemProps: _react.PropTypes.any
+	    itemProps: _react.PropTypes.any,
+	    getItemKey: _react.PropTypes.func.isRequired
 	};
 
 	exports.default = Grid;

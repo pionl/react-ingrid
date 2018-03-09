@@ -101,7 +101,7 @@ Ingrid.propTypes = {
 }
 
 Ingrid.defaultProps = {
-  getItemKey: (item) => typeof item.get === `function` ? item.get(`id`) : item.id
+    getItemKey: (item) => typeof item.get === `function` ? item.get(`id`) : item.id
 }
 
 export default Ingrid

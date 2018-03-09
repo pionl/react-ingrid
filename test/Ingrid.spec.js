@@ -40,7 +40,8 @@ describe(`react-ingrid`, () => {
                 items: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
                 itemWidth: PropTypes.number,
                 PreloaderComponent: PropTypes.func,
-                preloaderHeight: PropTypes.number
+                preloaderHeight: PropTypes.number,
+                getItemKey: PropTypes.func.isRequired
             }
 
             try {
@@ -81,7 +82,8 @@ describe(`react-ingrid`, () => {
                 load: rndoam.noop(),
                 paddingLeft: rndoam.number(),
                 paddingTop: rndoam.number(),
-                shouldPrerenderAll: true
+                shouldPrerenderAll: true,
+                getItemKey: rndoam.noop()
             }
 
             const tree = TestUtils.renderIntoDocument(
